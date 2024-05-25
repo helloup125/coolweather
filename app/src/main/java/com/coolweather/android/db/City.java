@@ -4,7 +4,9 @@ import org.litepal.crud.LitePalSupport;
 
 public class City extends LitePalSupport {
     private int id;
+
     private String cityName;//地级市名称
+
     private int cityCode;//地级市代号
     private int provinceId;//前市所属省的id值
 
