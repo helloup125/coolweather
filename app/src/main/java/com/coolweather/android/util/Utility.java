@@ -5,6 +5,11 @@ import android.text.TextUtils;
 import com.coolweather.android.db.City;
 import com.coolweather.android.db.County;
 import com.coolweather.android.db.Province;
+import com.coolweather.android.gson.AQI;
+import com.coolweather.android.gson.Forecast;
+import com.coolweather.android.gson.NowWeather;
+import com.coolweather.android.gson.Suggest;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -83,4 +88,47 @@ public class Utility {
         return false;
     }
 
+    private static Gson gson=new Gson();
+    public static Forecast handleForecastResponse(String response) {
+        try {
+            Forecast forecast = gson.fromJson(response, Forecast.class);
+            return forecast;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static AQI handleAQIResponse(String response) {
+        try {
+            AQI aqi = gson.fromJson(response, AQI.class);
+            return aqi;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Suggest handleSuggestResponse(String response) {
+        try {
+            Suggest suggest = gson.fromJson(response, Suggest.class);
+            return suggest;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static NowWeather handleNowWeatherResponse(String response) {
+        try {
+            NowWeather nowWeather = gson.fromJson(response, NowWeather.class);
+            return nowWeather;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
+
+
